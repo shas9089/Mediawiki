@@ -1,0 +1,33 @@
+---
+
+- name: download mediawiki
+  get_url:
+    url: https://releases.wikimedia.org/mediawiki/1.32/mediawiki-1.32.1.tar.gz
+    dest: /tmp/mediawiki-1.32.1.tar.gz
+
+- name: unzip mediawiki
+  unarchive:
+    src: /tmp/mediawiki-1.32.1.tar.gz
+    dest: /tmp
+    remote_src: yes
+
+- name: move mediawiki zip
+  shell: mv -u /tmp/mediawiki-1.32.1 /var/lib/mediawiki
+
+- name: Create symbolic link
+  file:
+   dest: "/var/www/html/mediawiki"
+   src: "/var/lib/mediawiki"
+   state: link
+   force: yes
+
+#- name: transform localsettings.php template
+#  template:
+#    dest: /var/lib/mediawiki/LocalSettings.php
+#    src: LocalSettings.php.j2
+
+- name: enable php mods
+  shell: phpenmod mbstring && sudo phpenmod xml
+  notify:
+    - clean-up mediawiki zip
+    - restart apache

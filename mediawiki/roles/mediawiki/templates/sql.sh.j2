@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# shell for configuring mediawiki mysql database
+
+mysql -u root --password={{ mysql_root_password }} -e "CREATE DATABASE my_wiki"
+mysql -u root --password={{ mysql_root_password }} -e "use my_wiki"
+
+mysql -u root --password={{ mysql_root_password }} -e "CREATE USER 'mediawiki_user'@'{{ firstweb }}' IDENTIFIED BY '{{ mediawiki_password }}'"
+mysql -u root --password={{ mysql_root_password }} -e "GRANT ALL ON my_wiki.* TO 'mediawiki_user'@'{{ firstweb }}'"
+
+mysql -u root --password={{ mysql_root_password }} -e "CREATE USER 'mediawiki_user'@'{{ secondweb }}' IDENTIFIED BY '{{ mediawiki_password }}'"
+mysql -u root --password={{ mysql_root_password }} -e "GRANT ALL ON my_wiki.* TO 'mediawiki_user'@'{{ secondweb }}'"

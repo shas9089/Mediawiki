@@ -1,0 +1,16 @@
+---
+
+- name: tranform sql setup template
+  template:
+    dest: /tmp/sql.sh
+    src: sql.sh.j2
+    mode: 0555
+
+- name: execute sql setup
+  shell: /tmp/sql.sh
+
+- name: modify mysql.conf to allow access to web server
+  shell: sed -i 's/bind-address/#bind-address/g' /etc/mysql/mysql.conf.d/mysqld.cnf
+  notify:
+    - restart mysql
+    - clean-up sql.sh

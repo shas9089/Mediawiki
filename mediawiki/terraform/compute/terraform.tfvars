@@ -1,0 +1,6 @@
+ami                 = "ami-04bde106886a53080"
+key_name            = "my_wiki"
+public_key_path     = "/home/ubuntu/.ssh/id_rsa.pub"
+web_instance_type   = "t2.micro"
+db_instance_type    = "t2.micro"
+aws_profile         = "shashank"
