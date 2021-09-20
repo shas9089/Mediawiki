@@ -32,3 +32,6 @@ terraform apply
 # Destroy
 
 terraform destroy
+
+# How to Execute Ansible Playbook independent of Terraform
+
