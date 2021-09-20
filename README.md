@@ -35,3 +35,5 @@ terraform destroy
 
 # How to Execute Ansible Playbook independent of Terraform
 
+ansible-playbook -i inventoy_file mediawiki-install.yaml
+
