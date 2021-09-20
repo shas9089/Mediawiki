@@ -14,7 +14,7 @@ Web servers can only make calls to DB server in private subnet.
 
 # Create the admin machine from where you run the terraform scripts.
 
-Give the execute permission to the 
+Give the execute permission to the admin-setup-script.sh which install the terraform and ansible on the admin machine.
 
 chmod 700 admin-setup-script.sh
 
