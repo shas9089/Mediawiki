@@ -19,9 +19,14 @@ Give the execute permission to the
 chmod 700 admin-setup-script.sh
 ./admin-setup-script.sh
 
-Plan
+# Plan
+
 terrform plan
-Apply
+
+# Apply
+
 terraform apply
-Destroy
+
+# Destroy
+
 terraform destroy
