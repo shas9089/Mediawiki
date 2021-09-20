@@ -17,6 +17,8 @@ Web servers can only make calls to DB server in private subnet.
 Give the execute permission to the 
 
 chmod 700 admin-setup-script.sh
+
+
 ./admin-setup-script.sh
 
 # Plan
